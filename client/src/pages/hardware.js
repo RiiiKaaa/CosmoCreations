@@ -9,6 +9,21 @@ function Hardware() {
     phone: '',
     message: ''
   });
+  
+  // Add state for notifications
+  const [notification, setNotification] = useState({
+    show: false,
+    type: '', // 'success' or 'error'
+    message: ''
+  });
+
+  // Function to show notification
+  const showNotification = (type, message) => {
+    setNotification({ show: true, type, message });
+    setTimeout(() => {
+      setNotification({ show: false, type: '', message: '' });
+    }, 4000); // Hide after 4 seconds
+  };
 
   useEffect(() => {
     const slider = sliderRef.current;
@@ -90,16 +105,59 @@ function Hardware() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  // Updated handleSubmit with professional notifications
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add your form submission logic here
-    alert('Message sent successfully!');
-    setFormData({ fullName: '', email: '', phone: '', message: '' });
+    
+    const submitData = new FormData();
+    submitData.append('access_key', '75863a2c-e9c7-49f8-9835-2602259cb57a');
+    submitData.append('name', formData.fullName);
+    submitData.append('email', formData.email);
+    submitData.append('phone', formData.phone);
+    submitData.append('message', formData.message);
+    
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: submitData
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        showNotification('success', 'Thank you! Your message has been sent successfully. We\'ll get back to you soon.');
+        setFormData({ fullName: '', email: '', phone: '', message: '' });
+      } else {
+        showNotification('error', 'Oops! Something went wrong. Please try again or contact us directly.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      showNotification('error', 'Network error. Please check your connection and try again.');
+    }
   };
 
   return (
     <div id="homepage" className="homepage-container">
+      {/* Professional Toast Notification */}
+      {notification.show && (
+        <div className={`toast-notification ${notification.type}`}>
+          <div className="toast-content">
+            <div className="toast-icon">
+              {notification.type === 'success' ? '✓' : '⚠'}
+            </div>
+            <div className="toast-message">
+              {notification.message}
+            </div>
+            <button 
+              className="toast-close"
+              onClick={() => setNotification({ show: false, type: '', message: '' })}
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="navbar">
         <nav>
           <ul>
