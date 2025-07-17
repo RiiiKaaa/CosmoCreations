@@ -1,0 +1,500 @@
+/* Contact Section - Matching Your Existing Theme */
+.contact-section {
+  padding: 100px 0 120px;
+  background: rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(133, 202, 255, 0.03) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(252, 184, 88, 0.03) 100%);
+  pointer-events: none;
+}
+
+.contact-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 50px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  color: rgb(11, 66, 73);
+  text-align: center;
+  font-family: "Libertinus Math", system-ui;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  
+  /* Initial state for scroll animation */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Animation state when scrolled into view */
+.contact-container.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(133, 202, 255, 0.1), transparent);
+  transition: left 1.9s ease;
+}
+
+.contact-container:hover::before {
+  left: 100%;
+}
+
+.contact-container:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.25),
+    0 0 30px rgba(133, 202, 255, 0.2);
+  border-color: rgba(133, 202, 255, 0.4);
+}
+
+.contact-container h2 {
+  font-size: 3.2rem;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: rgb(11, 66, 73);
+  position: relative;
+  
+  /* Initial state for scroll animation */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-delay: 0.2s;
+}
+
+/* Animation state when parent is animated */
+.contact-container.animate h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-container h2::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(135deg, #85caff, #fcb858);
+  border-radius: 2px;
+  
+  /* Initial state for scroll animation */
+  opacity: 0;
+  transform: translateX(-50%) scaleX(0);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-delay: 0.6s;
+}
+
+.contact-container.animate h2::after {
+  opacity: 1;
+  transform: translateX(-50%) scaleX(1);
+}
+
+.contact-container > p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  letter-spacing: 0.5px;
+  margin-bottom: 40px;
+  color: rgb(11, 66, 73);
+  padding: 0 20px;
+  
+  /* Initial state for scroll animation */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-delay: 0.4s;
+}
+
+.contact-container.animate > p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-form {
+  text-align: left;
+  
+  /* Initial state for scroll animation */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-delay: 0.6s;
+}
+
+.contact-container.animate .contact-form {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-group {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: rgb(11, 66, 73);
+  font-family: "Libertinus Math", system-ui;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: rgba(133, 202, 255, 0.6);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.15),
+    0 0 20px rgba(133, 202, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(11, 66, 73, 0.6);
+  font-family: "Libertinus Math", system-ui;
+  letter-spacing: 0.5px;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.contact-submit {
+  width: 100%;
+  padding: 18px 40px;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  color: rgb(11, 66, 73);
+  font-family: "Libertinus Math", system-ui;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  text-transform: uppercase;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.contact-submit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.contact-submit:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(133, 202, 255, 0.6);
+  color: #0b4249;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(133, 202, 255, 0.3);
+  letter-spacing: 2px;
+}
+
+.contact-submit:hover::before {
+  left: 100%;
+}
+
+.contact-submit:active {
+  transform: translateY(-1px) scale(1.01);
+}
+
+/* Animations - Using your existing keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes brandAssemble {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    filter: blur(6px);
+    letter-spacing: 8px;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+    letter-spacing: 2px;
+  }
+}
+
+/* Responsive Design - Matching Your Existing Breakpoints */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 80px 0 100px;
+  }
+
+  .contact-container {
+    max-width: 90vw;
+    padding: 40px 30px;
+    margin: 0 20px;
+  }
+  
+  .contact-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+  }
+  
+  .contact-container h2::after {
+    width: 60px;
+    height: 2px;
+    bottom: -10px;
+  }
+  
+  .contact-container > p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 35px;
+    padding: 0 10px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 16px 18px;
+    font-size: 0.95rem;
+  }
+
+  .contact-submit {
+    padding: 16px 35px;
+    font-size: 1.1rem;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-container {
+    padding: 30px 20px;
+  }
+  
+  .contact-container h2 {
+    font-size: 2.2rem;
+  }
+  
+  .contact-container > p {
+    font-size: 1rem;
+    padding: 0 5px;
+    margin-bottom: 30px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 15px 16px;
+    font-size: 0.9rem;
+  }
+
+  .form-group textarea {
+    min-height: 100px;
+  }
+
+  .contact-submit {
+    padding: 15px 30px;
+    font-size: 1rem;
+  }
+}
+
+
+/* Toast Notification Styles */
+.toast-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  max-width: 400px;
+  z-index: 9999;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.toast-notification.success {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-left: 4px solid #047857;
+}
+
+.toast-notification.error {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  border-left: 4px solid #b91c1c;
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  color: white;
+}
+
+.toast-icon {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 12px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.toast-message {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+.toast-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Animation */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .toast-notification {
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+  
+  .toast-content {
+    padding: 14px 16px;
+  }
+  
+  .toast-message {
+    font-size: 13px;
+  }
+}
+
+
+.contact-details {
+  background-color: transparent;
+  color: rgb(11, 66, 73);
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.contact-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.icon {
+  font-size: 1.5rem;
+  margin-right: 15px;
+  min-width: 24px;
+}
+
+.contact-item strong {
+  display: block;
+  font-size: 0.9rem;
+}
+
+.contact-item p {
+  margin: 4px 0 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}

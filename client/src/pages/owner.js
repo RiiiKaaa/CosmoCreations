@@ -81,7 +81,7 @@ const Owner = () => {
               <a href="/owner">Owner</a>
             </li>
             <li>
-              <a href="#contact">Contact</a>
+              <a href="/contact">Contact</a>
             </li>
           </ul>
         </nav>
