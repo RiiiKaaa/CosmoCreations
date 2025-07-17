@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import "../styles/hardware.css";
 
 function Hardware() {
@@ -330,6 +331,33 @@ function Hardware() {
             </button>
           </div>
         </div>
+
+        <div className="contact-details">
+      <h3 className="contact-heading">CONTACT INFORMATION</h3>
+      <div className="contact-item">
+        <FaMapMarkerAlt className="icon" />
+        <div>
+          <strong>ADDRESS</strong>
+          <p>Vestibulum neque massa, scelerisque sit amet ligula eu, congue molestie mi
+          </p>
+        </div>
+      </div>
+      <div className="contact-item">
+        <FaPhoneAlt className="icon" />
+        <div>
+          <strong>PHONE</strong>
+          <p>+91-1234567890<br />+91-1234567890</p>
+        </div>
+      </div>
+      <div className="contact-item">
+        <FaEnvelope className="icon" />
+        <div>
+          <strong>EMAIL</strong>
+          <p>info@cosmointernational.com</p>
+        </div>
+      </div>
+    </div>
+
       </section>
     </div>
   );
